@@ -1,4 +1,5 @@
 import methods.Lagrange;
+import methods.Newton;
 
 public class Main {
     public static void main(String[] args){
@@ -6,5 +7,6 @@ public class Main {
         double[] Y = {1.25, 2.38, 3.79, 5.44, 7.14};
         double solution = Lagrange.solve(X, Y, 0.35);
         System.out.println(solution);
+        System.out.println(Newton.solve(X,Y,0.35));
     }
 }
