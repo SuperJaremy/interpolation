@@ -8,12 +8,12 @@ public class Newton {
     public static double solve(double[] X, double[] Y, double x) {
         int previous = 0;
         for (int i = 0; i < X.length - 1; i++) {
-            if (x > X[i] && X[i + 1] > x) {
+            if (x >= X[i] && X[i + 1] >= x) {
                 previous = i;
                 break;
             }
         }
-        if(x > X[X.length - 1])
+        if (x >= X[X.length - 1])
             previous = X.length - 1;
         Map<Integer, List<Double>> differencesByOrder = new HashMap<>();
         int order = 0;
@@ -34,10 +34,10 @@ public class Newton {
         if (previous < X.length / 2) {
             double t = (x - X[previous]) / (X[1] - X[0]);
             return interpolateForward(t, differencesByOrder, Y.length - previous - 1, previous);
-        }
-        else {
-            double t = (x - X[X.length - 1]) / (X[1] - X[0]);
-            return interpolateBackward(t, differencesByOrder, Y.length - 1);
+        } else {
+            int next = previous==X.length-1? previous : previous + 1;
+            double t = (x - X[next]) / (X[1] - X[0]);
+            return interpolateBackward(t, differencesByOrder, next);
         }
     }
 
