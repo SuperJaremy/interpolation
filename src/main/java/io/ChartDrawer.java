@@ -26,7 +26,7 @@ public class ChartDrawer extends JFrame {
             max = Math.max(max, X[i]);
         }
         double length = max - min;
-        for (double i = min - length / 10; i < max + length / 10; i += length / 100) {
+        for (double i = min - length / 100; i < max + length / 100; i += length / 100) {
             approxSeries.add(i, method.solve(X, Y, i));
         }
         XYSeriesCollection dataset = new XYSeriesCollection();

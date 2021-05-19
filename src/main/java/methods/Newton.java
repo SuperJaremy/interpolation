@@ -54,7 +54,7 @@ public class Newton {
         double value = differencesByOrder.get(0).get(order);
         for (int i = 1; i <= order; i++) {
             value += (t / CombinatoricsUtils.factorial(i)) * differencesByOrder.get(i).get(order - i);
-            t *= (t - i);
+            t *= (t + i);
         }
         return value;
     }
